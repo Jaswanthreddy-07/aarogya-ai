@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ArogyaAI - Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .dashboard {
+            padding: 45px 7%;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 38px;
+        }
+
+        .dashboard-header p {
+            color: #718b88;
+        }
+
+        .date-box {
+            background: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 1px solid #e1eeee;
+        }
+
+        /* HEALTH CARDS */
+
+        .health-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .health-box {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #e4eeee;
+            box-shadow: 0 8px 25px rgba(20, 80, 75, 0.06);
+        }
+
+        .health-box .top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .health-box h2 {
+            font-size: 30px;
+        }
+
+        .health-box p {
+            color: #718b88;
+        }
+
+        .health-icon {
+            font-size: 27px;
+        }
+
+        /* MAIN GRID */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+        .panel {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #e4eeee;
+            margin-bottom: 25px;
+        }
+
+        .panel-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .panel-title a {
+            color: #18a999;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* CHART */
+
+        .chart {
+            height: 220px;
+            display: flex;
+            align-items: end;
+            gap: 15px;
+            padding: 20px 10px;
+            border-bottom: 1px solid #dfeceb;
+        }
+
+        .bar {
+            flex: 1;
+            background: #72cfc5;
+            border-radius: 8px 8px 0 0;
+            min-height: 30px;
+        }
+
+        .days {
+            display: flex;
+            justify-content: space-around;
+            color: #718b88;
+            margin-top: 10px;
+        }
+
+        /* MEDICINE */
+
+        .medicine {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f6faf9;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .medicine strong {
+            display: block;
+        }
+
+        .medicine small {
+            color: #718b88;
+        }
+
+        .taken {
+            color: #18a999;
+            font-weight: bold;
+        }
+
+        .pending {
+            color: #d98a26;
+            font-weight: bold;
+        }
+
+        /* FAMILY */
+
+        .family-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #edf2f1;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #d7f1ed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .family-info {
+            flex: 1;
+        }
+
+        .family-info small {
+            color: #718b88;
+        }
+
+        .online {
+            color: #18a999;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 900px) {
+
+            .health-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            .health-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="family.html">Family</a>
+        <a href="reports.html">Reports</a>
+    </nav>
+
+    <button class="login-btn">Profile</button>
+
+</header>
+
+
+<main class="dashboard">
+
+    <div class="dashboard-header">
+
+        <div>
+            <h1>Health Dashboard</h1>
+            <p>Welcome back! Here's your family's wellness overview.</p>
+        </div>
+
+        <div class="date-box">
+            📅 September 1, 2026
+        </div>
+
+    </div>
+
+
+    <!-- HEALTH STATISTICS -->
+
+    <section class="health-grid">
+
+        <div class="health-box">
+
+            <div class="top">
+                <p>Wellness Score</p>
+                <span class="health-icon">❤️</span>
+            </div>
+
+            <h2>82/100</h2>
+            <p>Good wellness indicators</p>
+
+        </div>
+
+
+        <div class="health-box">
+
+            <div class="top">
+                <p>Heart Rate</p>
+                <span class="health-icon">💓</span>
+            </div>
+
+            <h2>72 BPM</h2>
+            <p>Current reading</p>
+
+        </div>
+
+
+        <div class="health-box">
+
+            <div class="top">
+                <p>Sleep</p>
+                <span class="health-icon">🌙</span>
+            </div>
+
+            <h2>7.5 hrs</h2>
+            <p>Last night's sleep</p>
+
+        </div>
+
+
+        <div class="health-box">
+
+            <div class="top">
+                <p>Steps</p>
+                <span class="health-icon">👟</span>
+            </div>
+
+            <h2>6,240</h2>
+            <p>Today's activity</p>
+
+        </div>
+
+    </section>
+
+
+    <div class="dashboard-grid">
+
+
+        <!-- LEFT -->
+
+        <div>
+
+            <div class="panel">
+
+                <div class="panel-title">
+
+                    <div>
+                        <h2>Health Trends</h2>
+                        <p>Weekly wellness overview</p>
+                    </div>
+
+                    <a href="reports.html">View Reports</a>
+
+                </div>
+
+
+                <div class="chart">
+
+                    <div class="bar" style="height:70%"></div>
+                    <div class="bar" style="height:55%"></div>
+                    <div class="bar" style="height:80%"></div>
+                    <div class="bar" style="height:65%"></div>
+                    <div class="bar" style="height:90%"></div>
+                    <div class="bar" style="height:75%"></div>
+                    <div class="bar" style="height:85%"></div>
+
+                </div>
+
+                <div class="days">
+
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                    <span>Sun</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- MEDICINES -->
+
+            <div class="panel">
+
+                <div class="panel-title">
+
+                    <h2>Medicine Reminders</h2>
+
+                    <a href="medicines.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div class="medicine">
+
+                    <div>
+                        <strong>Morning Medicine</strong>
+                        <small>08:00 AM</small>
+                    </div>
+
+                    <span class="taken">
+                        ✓ Taken
+                    </span>
+
+                </div>
+
+
+                <div class="medicine">
+
+                    <div>
+                        <strong>Afternoon Medicine</strong>
+                        <small>01:00 PM</small>
+                    </div>
+
+                    <span class="pending">
+                        Pending
+                    </span>
+
+                </div>
+
+
+                <div class="medicine">
+
+                    <div>
+                        <strong>Night Medicine</strong>
+                        <small>09:00 PM</small>
+                    </div>
+
+                    <span class="pending">
+                        Upcoming
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div>
+
+            <!-- FAMILY -->
+
+            <div class="panel">
+
+                <div class="panel-title">
+
+                    <h2>Family</h2>
+
+                    <a href="family.html">
+                        Manage
+                    </a>
+
+                </div>
+
+
+                <div class="family-row">
+
+                    <div class="avatar">R</div>
+
+                    <div class="family-info">
+                        <strong>Rajesh</strong>
+                        <small>Primary User</small>
+                    </div>
+
+                    <span class="online">● Active</span>
+
+                </div>
+
+
+                <div class="family-row">
+
+                    <div class="avatar">M</div>
+
+                    <div class="family-info">
+                        <strong>Mother</strong>
+                        <small>Family Member</small>
+                    </div>
+
+                    <span class="online">● Active</span>
+
+                </div>
+
+
+                <div class="family-row">
+
+                    <div class="avatar">F</div>
+
+                    <div class="family-info">
+                        <strong>Father</strong>
+                        <small>Family Member</small>
+                    </div>
+
+                    <span class="online">● Active</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="panel">
+
+                <div class="panel-title">
+                    <h2>Quick Actions</h2>
+                </div>
+
+                <a href="face-scan.html" class="primary-btn"
+                   style="display:block;text-align:center;margin-bottom:12px;">
+                    📷 Start Face Scan
+                </a>
+
+                <a href="voice.check.html" class="secondary-btn"
+                   style="display:block;text-align:center;margin-bottom:12px;">
+                    🎙️ Voice Check
+                </a>
+
+                <a href="emergency.html"
+                   style="display:block;text-align:center;padding:13px;
+                   background:#fce9e9;color:#d95353;
+                   text-decoration:none;border-radius:8px;font-weight:bold;">
+                    🚨 Emergency Alert
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <p>
+        Intelligent Family Health Guardian
+    </p>
+
+    <small>
+        Wellness and risk indicators only. Not a medical diagnosis or prescription.
+    </small>
+
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
+

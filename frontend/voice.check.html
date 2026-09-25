@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ArogyaAI - Voice Check</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .voice-page {
+            min-height: 75vh;
+            padding: 55px 7%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .voice-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .voice-header h1 {
+            font-size: 40px;
+        }
+
+        .voice-header p {
+            color: #718b88;
+            max-width: 650px;
+            margin: 10px auto;
+        }
+
+        .voice-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .voice-card,
+        .result-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #e3eeee;
+            box-shadow: 0 10px 30px rgba(20,80,75,0.07);
+        }
+
+        /* VOICE AREA */
+
+        .voice-circle {
+            width: 150px;
+            height: 150px;
+            margin: 30px auto;
+            border-radius: 50%;
+            background: #e4f6f3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 65px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .voice-circle:hover {
+            transform: scale(1.05);
+        }
+
+        .voice-circle.listening {
+            animation: pulse 1.2s infinite;
+            background: #ccefe9;
+        }
+
+        @keyframes pulse {
+
+            0% {
+                box-shadow: 0 0 0 0 rgba(24,169,153,0.35);
+            }
+
+            70% {
+                box-shadow: 0 0 0 25px rgba(24,169,153,0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(24,169,153,0);
+            }
+
+        }
+
+        .voice-status {
+            text-align: center;
+            font-weight: bold;
+            color: #18a999;
+            min-height: 25px;
+        }
+
+        .instructions {
+            background: #f6faf9;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+
+        .instructions h3 {
+            margin-bottom: 10px;
+        }
+
+        .instructions p {
+            color: #718b88;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        /* BUTTONS */
+
+        .voice-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .start-btn {
+            flex: 1;
+            padding: 14px;
+            background: #18a999;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .stop-btn {
+            flex: 1;
+            padding: 14px;
+            background: white;
+            border: 1px solid #d8e5e3;
+            color: #486563;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* RESULT */
+
+        .result-box {
+            background: #f6faf9;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .result-icon {
+            font-size: 45px;
+        }
+
+        .result-score {
+            font-size: 40px;
+            font-weight: bold;
+            color: #18a999;
+            margin: 8px;
+        }
+
+        .result-message {
+            color: #718b88;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e4eeee;
+        }
+
+        .result-row span {
+            color: #718b88;
+        }
+
+        .ready {
+            color: #18a999;
+            font-weight: bold;
+        }
+
+        .note {
+            margin-top: 20px;
+            padding: 14px;
+            background: #fff8e8;
+            color: #856b32;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+
+        @media(max-width:800px) {
+
+            .voice-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="family.html">Family</a>
+        <a href="reports.html">Reports</a>
+
+    </nav>
+
+    <button class="login-btn">
+        Profile
+    </button>
+
+</header>
+
+
+<main class="voice-page">
+
+
+    <!-- HEADER -->
+
+    <div class="voice-header">
+
+        <h1>🎙️ AI Voice Check</h1>
+
+        <p>
+            Use your voice for an AI-assisted wellness check.
+            Speak clearly in a quiet environment.
+        </p>
+
+    </div>
+
+
+    <div class="voice-container">
+
+
+        <!-- VOICE INPUT -->
+
+        <div class="voice-card">
+
+            <h2>Voice Check</h2>
+
+            <p style="color:#718b88;">
+                Press the microphone and speak clearly.
+            </p>
+
+
+            <div
+                class="voice-circle"
+                id="micButton"
+                onclick="startVoice()">
+
+                🎙️
+
+            </div>
+
+
+            <div
+                class="voice-status"
+                id="voiceStatus">
+
+                Ready to start
+
+            </div>
+
+
+            <div class="voice-buttons">
+
+                <button
+                    class="start-btn"
+                    onclick="startVoice()">
+
+                    🎙️ Start Voice Check
+
+                </button>
+
+                <button
+                    class="stop-btn"
+                    onclick="stopVoice()">
+
+                    Stop
+
+                </button>
+
+            </div>
+
+
+            <div class="instructions">
+
+                <h3>Instructions</h3>
+
+                <p>✓ Stay in a quiet environment.</p>
+
+                <p>✓ Speak normally and clearly.</p>
+
+                <p>✓ Keep the microphone close enough to capture your voice.</p>
+
+                <p>✓ Wait for the analysis to complete.</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="result-card">
+
+            <h2>Voice Check Result</h2>
+
+
+            <div class="result-box">
+
+                <div class="result-icon">
+                    🎙️
+                </div>
+
+                <div
+                    class="result-score"
+                    id="score">
+
+                    --
+
+                </div>
+
+                <strong>
+                    Wellness Indicator
+                </strong>
+
+                <p
+                    class="result-message"
+                    id="resultMessage">
+
+                    Start the voice check to view the result.
+
+                </p>
+
+            </div>
+
+
+            <div class="result-row">
+
+                <span>Microphone</span>
+
+                <strong
+                    class="ready"
+                    id="micStatus">
+
+                    Ready
+
+                </strong>
+
+            </div>
+
+
+            <div class="result-row">
+
+                <span>Voice Capture</span>
+
+                <strong id="captureStatus">
+
+                    Waiting
+
+                </strong>
+
+            </div>
+
+
+            <div class="result-row">
+
+                <span>AI Analysis</span>
+
+                <strong id="analysisStatus">
+
+                    Not Started
+
+                </strong>
+
+            </div>
+
+
+            <div class="note">
+
+                ⚠️ This is a frontend prototype.
+                Voice analysis must be connected to the
+                ArogyaAI backend and AI model for actual processing.
+                Results should be treated as wellness indicators,
+                not medical diagnosis.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <p>
+        Intelligent Family Health Guardian
+    </p>
+
+    <small>
+        Wellness and risk indicators only. Not a medical diagnosis or prescription.
+    </small>
+
+</footer>
+
+
+<script>
+
+let recognition = null;
+
+
+/* CHECK BROWSER SUPPORT */
+
+if ("webkitSpeechRecognition" in window) {
+
+    recognition =
+        new webkitSpeechRecognition();
+
+    recognition.continuous = false;
+
+    recognition.interimResults = false;
+
+    recognition.lang = "en-US";
+
+
+    recognition.onstart = function() {
+
+        document
+            .getElementById("voiceStatus")
+            .innerText = "Listening...";
+
+        document
+            .getElementById("micButton")
+            .classList.add("listening");
+
+        document
+            .getElementById("captureStatus")
+            .innerText = "Recording";
+
+        document
+            .getElementById("micStatus")
+            .innerText = "Active";
+
+    };
+
+
+    recognition.onresult = function(event) {
+
+        const transcript =
+            event.results[0][0].transcript;
+
+        console.log("Voice:", transcript);
+
+        document
+            .getElementById("voiceStatus")
+            .innerText =
+            "Voice captured successfully";
+
+        document
+            .getElementById("captureStatus")
+            .innerText =
+            "Captured";
+
+        analyzeVoice();
+
+    };
+
+
+    recognition.onerror = function() {
+
+        document
+            .getElementById("voiceStatus")
+            .innerText =
+            "Unable to capture voice";
+
+        document
+            .getElementById("captureStatus")
+            .innerText =
+            "Error";
+
+        stopUI();
+
+    };
+
+
+    recognition.onend = function() {
+
+        stopUI();
+
+    };
+
+}
+
+
+/* START */
+
+function startVoice() {
+
+    if (!recognition) {
+
+        alert(
+            "Voice recognition is not supported in this browser."
+        );
+
+        return;
+
+    }
+
+    try {
+
+        recognition.start();
+
+    } catch(error) {
+
+        console.log(error);
+
+    }
+
+}
+
+
+/* STOP */
+
+function stopVoice() {
+
+    if (recognition) {
+
+        recognition.stop();
+
+    }
+
+    stopUI();
+
+}
+
+
+function stopUI() {
+
+    document
+        .getElementById("micButton")
+        .classList.remove("listening");
+
+    document
+        .getElementById("micStatus")
+        .innerText =
+        "Ready";
+
+}
+
+
+/* DEMO AI ANALYSIS */
+
+function analyzeVoice() {
+
+    document
+        .getElementById("analysisStatus")
+        .innerText =
+        "Analyzing...";
+
+
+    setTimeout(function() {
+
+        document
+            .getElementById("score")
+            .innerText =
+            "80/100";
+
+
+        document
+            .getElementById("resultMessage")
+            .innerText =
+            "Voice wellness indicators look good.";
+
+
+        document
+            .getElementById("analysisStatus")
+            .innerText =
+            "Completed";
+
+    }, 1500);
+
+}
+
+</script>
+<script src="js/api.js"></script>
+<script src="js/voice.js"></script>
+
+
+</body>
+
+</html>
+

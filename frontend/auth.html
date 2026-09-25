@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArogyaAI - Secure access</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <section class="auth-intro">
+      <a class="logo" href="index.html">Arogya<span>AI</span></a>
+      <p class="eyebrow">YOUR FAMILY HEALTH COMPANION</p>
+      <h1>Better care begins with a clearer picture.</h1>
+      <p>Keep wellness readings, medicine schedules, family details, and emergency contacts together in one calm, private space.</p>
+    </section>
+    <section class="auth-card">
+      <p class="eyebrow">SECURE ACCESS</p>
+      <h2 id="authTitle">Welcome back</h2>
+      <p id="authMessage" class="muted">Sign in to continue to your dashboard.</p>
+      <form id="authForm">
+        <div id="registerFields" hidden>
+          <label>Full name<input name="name" type="text" autocomplete="name"></label>
+          <div class="form-grid">
+            <label>Age<input name="age" type="number" min="1" max="120"></label>
+            <label>Gender<input name="gender" type="text"></label>
+          </div>
+        </div>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" minlength="6" required></label>
+        <button class="primary-btn wide" type="submit">Sign in</button>
+      </form>
+      <button id="modeToggle" class="text-btn" type="button">Create an account</button>
+    </section>
+  </main>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

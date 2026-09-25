@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ArogyaAI - Family Management</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .family-page {
+            padding: 50px 7%;
+        }
+
+        .family-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .family-header h1 {
+            font-size: 40px;
+        }
+
+        .family-header p {
+            color: #718b88;
+        }
+
+        .add-btn {
+            background: #18a999;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* FAMILY GRID */
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #e2eeee;
+            box-shadow: 0 10px 30px rgba(20, 80, 75, 0.06);
+            transition: 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-top {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .member-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #d8f2ee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: bold;
+            color: #167e75;
+        }
+
+        .member-name h2 {
+            font-size: 21px;
+        }
+
+        .member-name p {
+            color: #718b88;
+        }
+
+        .active {
+            color: #18a999;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .member-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .stat {
+            padding: 15px;
+            background: #f5faf9;
+            border-radius: 12px;
+        }
+
+        .stat small {
+            display: block;
+            color: #718b88;
+            margin-bottom: 4px;
+        }
+
+        .stat strong {
+            font-size: 18px;
+        }
+
+        .view-btn {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #18a999;
+            background: white;
+            color: #18a999;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .view-btn:hover {
+            background: #18a999;
+            color: white;
+        }
+
+        /* ADD MEMBER */
+
+        .add-card {
+            border: 2px dashed #a9d9d4;
+            background: #f8fcfb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            text-align: center;
+        }
+
+        .add-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #d9f2ee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: auto;
+        }
+
+        .add-card h2 {
+            margin-top: 15px;
+        }
+
+        .add-card p {
+            color: #718b88;
+            margin: 8px 0 20px;
+        }
+
+        @media(max-width:900px) {
+
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media(max-width:600px) {
+
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .family-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="family.html">Family</a>
+        <a href="reports.html">Reports</a>
+
+    </nav>
+
+    <button class="login-btn">
+        Profile
+    </button>
+
+</header>
+
+
+<main class="family-page">
+
+
+    <div class="family-header">
+
+        <div>
+
+            <h1>Family Management</h1>
+
+            <p>
+                Manage your family members and monitor their wellness.
+            </p>
+
+        </div>
+
+        <a href="#" class="add-btn">
+            + Add Family Member
+        </a>
+
+    </div>
+
+
+    <section class="members-grid">
+
+
+        <!-- MEMBER 1 -->
+
+        <div class="member-card">
+
+            <div class="member-top">
+
+                <div class="member-avatar">
+                    R
+                </div>
+
+                <div class="member-name">
+
+                    <h2>Rajesh</h2>
+
+                    <p>Primary User</p>
+
+                    <span class="active">
+                        ● Active
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="member-stats">
+
+                <div class="stat">
+
+                    <small>Wellness</small>
+
+                    <strong>82/100</strong>
+
+                </div>
+
+                <div class="stat">
+
+                    <small>Heart Rate</small>
+
+                    <strong>72 BPM</strong>
+
+                </div>
+
+                <div class="stat">
+
+                    <small>Sleep</small>
+
+                    <strong>7.5 hrs</strong>
+
+                </div>
+
+                <div class="stat">
+
+                    <small>Steps</small>
+
+                    <strong>6,240</strong>
+
+                </div>
+
+            </div>
+
+
+            <button class="view-btn">
+                View Health Details
+            </button>
+
+        </div>
+
+
+        <!-- MEMBER 2 -->
+
+        <div class="member-card">
+
+            <div class="member-top">
+
+                <div class="member-avatar">
+                    M
+                </div>
+
+                <div class="member-name">
+
+                    <h2>Mother</h2>
+
+                    <p>Family Member</p>
+
+                    <span class="active">
+                        ● Active
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="member-stats">
+
+                <div class="stat">
+
+                    <small>Wellness</small>
+
+                    <strong>76/100</strong>
+
+                </div>
+
+                <div class="stat">
+
+                    <small>Heart Rate</small>
+
+                    <strong>78 BPM</strong>
+
+                </div>
+
+                <div class="stat">
+
+                    <small>Sleep</small>
+
+                    <strong>7 hrs</strong>
+
+                </div>
+
+                <div class="stat">
+
+                    <small>Steps</small>
+
+                    <strong>4,820</strong>
+
+                </div>
+
+            </div>
+
+
+            <button class="view-btn">
+                View Health Details
+            </button>
+
+        </div>
+
+
+        <!-- MEMBER 3 -->
+
+        <div class="member-card">
+
+            <div class="member-top">
+
+                <div class="member-avatar">
+                    F
+                </div>
+
+                <div class="member-name">
+
+                    <h2>Father</h2>
+
+                    <p>Family Member</p>
+
+                    <span class="active">
+                        ● Active
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="member-stats">
+
+                <div class="stat">
+
+                    <small>Wellness</small>
+
+                    <strong>79/100</strong>
+
+                </div>
+
+                <div class="stat">
+
+                    <small>Heart Rate</small>
+
+                    <strong>75 BPM</strong>
+
+                </div>
+
+                <div class="stat">
+
+                    <small>Sleep</small>
+
+                    <strong>7.2 hrs</strong>
+
+                </div>
+
+                <div class="stat">
+
+                    <small>Steps</small>
+
+                    <strong>5,340</strong>
+
+                </div>
+
+            </div>
+
+
+            <button class="view-btn">
+                View Health Details
+            </button>
+
+        </div>
+
+
+        <!-- ADD MEMBER -->
+
+        <div class="member-card add-card">
+
+            <div>
+
+                <div class="add-icon">
+                    +
+                </div>
+
+                <h2>Add Family Member</h2>
+
+                <p>
+                    Add another member to your family health dashboard.
+                </p>
+
+                <a href="#" class="add-btn">
+                    Add Member
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+<script src="js/api.js"></script>
+<script src="js/family.js"></script>
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <p>
+        Intelligent Family Health Guardian
+    </p>
+
+    <small>
+        Wellness and risk indicators only. Not a medical diagnosis or prescription.
+    </small>
+
+</footer>
+
+
+</body>
+
+</html>
+

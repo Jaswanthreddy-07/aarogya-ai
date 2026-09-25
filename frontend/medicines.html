@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArogyaAI - Medicine Reminders</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .medicine-page {
+            padding: 50px 7%;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .page-header h1 {
+            font-size: 40px;
+        }
+
+        .page-header p {
+            color: #718b88;
+        }
+
+        .add-btn {
+            background: #18a999;
+            color: white;
+            border: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* SUMMARY */
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #e3eeee;
+        }
+
+        .summary-card p {
+            color: #718b88;
+        }
+
+        .summary-card h2 {
+            font-size: 30px;
+            margin-top: 5px;
+        }
+
+        /* MEDICINE LIST */
+
+        .medicine-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #e3eeee;
+        }
+
+        .medicine-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .medicine-title a {
+            color: #18a999;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .medicine-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #edf2f1;
+        }
+
+        .medicine-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: #e5f5f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+        }
+
+        .medicine-info {
+            flex: 1;
+        }
+
+        .medicine-info h3 {
+            margin-bottom: 3px;
+        }
+
+        .medicine-info p {
+            color: #718b88;
+            font-size: 14px;
+        }
+
+        .time {
+            color: #486563;
+            font-weight: bold;
+        }
+
+        .status {
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .taken {
+            background: #e2f5ee;
+            color: #16856f;
+        }
+
+        .pending {
+            background: #fff1d9;
+            color: #a56d19;
+        }
+
+        .upcoming {
+            background: #e8f0ff;
+            color: #416da8;
+        }
+
+        .action-btn {
+            border: none;
+            background: #18a999;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        @media(max-width:800px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .medicine-item {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="family.html">Family</a>
+        <a href="reports.html">Reports</a>
+    </nav>
+
+    <button class="login-btn">Profile</button>
+
+</header>
+
+
+<main class="medicine-page">
+
+    <div class="page-header">
+
+        <div>
+            <h1>💊 Medicine Reminders</h1>
+
+            <p>
+                Manage your medicine schedule and reminders.
+            </p>
+        </div>
+
+        <button class="add-btn" onclick="addMedicine()">
+            + Add Medicine
+        </button>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+            <p>Today's Medicines</p>
+            <h2>3</h2>
+        </div>
+
+        <div class="summary-card">
+            <p>Completed</p>
+            <h2>1</h2>
+        </div>
+
+        <div class="summary-card">
+            <p>Pending</p>
+            <h2>2</h2>
+        </div>
+
+    </section>
+
+
+    <!-- MEDICINES -->
+
+    <section class="medicine-container">
+
+        <div class="medicine-title">
+
+            <h2>Today's Schedule</h2>
+
+            <a href="dashboard.html">
+                Dashboard →
+            </a>
+
+        </div>
+
+
+        <!-- Medicine 1 -->
+
+        <div class="medicine-item">
+
+            <div class="medicine-icon">
+                💊
+            </div>
+
+            <div class="medicine-info">
+                <h3>Morning Medicine</h3>
+                <p>Primary User • Morning</p>
+            </div>
+
+            <div class="time">
+                08:00 AM
+            </div>
+
+            <span class="status taken">
+                ✓ Taken
+            </span>
+
+        </div>
+
+
+        <!-- Medicine 2 -->
+
+        <div class="medicine-item">
+
+            <div class="medicine-icon">
+                💊
+            </div>
+
+            <div class="medicine-info">
+                <h3>Afternoon Medicine</h3>
+                <p>Primary User • Afternoon</p>
+            </div>
+
+            <div class="time">
+                01:00 PM
+            </div>
+
+            <span class="status pending" id="pendingStatus">
+                Pending
+            </span>
+
+            <button class="action-btn" onclick="markTaken(this)">
+                Mark Taken
+            </button>
+
+        </div>
+
+
+        <!-- Medicine 3 -->
+
+        <div class="medicine-item">
+
+            <div class="medicine-icon">
+                💊
+            </div>
+
+            <div class="medicine-info">
+                <h3>Night Medicine</h3>
+                <p>Primary User • Night</p>
+            </div>
+
+            <div class="time">
+                09:00 PM
+            </div>
+
+            <span class="status upcoming">
+                Upcoming
+            </span>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <p>
+        Intelligent Family Health Guardian
+    </p>
+
+    <small>
+        Medicine reminders are for schedule management and do not constitute medical advice.
+    </small>
+
+</footer>
+
+
+<script>
+
+function markTaken(button) {
+
+    const item = button.parentElement;
+
+    const status = item.querySelector(".status");
+
+    status.innerText = "✓ Taken";
+
+    status.className = "status taken";
+
+    button.remove();
+
+    alert("Medicine marked as taken.");
+
+}
+
+
+function addMedicine() {
+
+    alert(
+        "Add Medicine form will be connected to the backend."
+    );
+
+}
+
+</script>
+<script src="js/api.js"></script>
+<script src="js/medicines.js"></script>
+
+</body>
+</html>
+

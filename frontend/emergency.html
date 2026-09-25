@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ArogyaAI - Emergency Alert</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .emergency-page {
+            min-height: 75vh;
+            padding: 60px 7%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .emergency-container {
+            width: 100%;
+            max-width: 850px;
+        }
+
+        .emergency-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .emergency-header h1 {
+            font-size: 42px;
+        }
+
+        .emergency-header p {
+            color: #718b88;
+            margin-top: 10px;
+        }
+
+        .alert-card {
+            background: white;
+            padding: 40px;
+            border-radius: 22px;
+            border: 1px solid #e4eeee;
+            box-shadow: 0 15px 40px rgba(20,80,75,0.08);
+            text-align: center;
+        }
+
+        .emergency-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #fdeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 45px;
+        }
+
+        .alert-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .alert-card > p {
+            color: #718b88;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .emergency-btn {
+            margin-top: 30px;
+            width: 230px;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            background: #d95353;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .emergency-btn:hover {
+            background: #c74343;
+        }
+
+        .contacts {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+        }
+
+        .contact {
+            padding: 18px;
+            background: #f7faf9;
+            border-radius: 12px;
+        }
+
+        .contact-icon {
+            font-size: 25px;
+        }
+
+        .contact strong {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .contact small {
+            color: #718b88;
+        }
+
+        .warning {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #fff8e8;
+            color: #8a6d2f;
+            font-size: 13px;
+        }
+
+        @media(max-width:650px) {
+
+            .contacts {
+                grid-template-columns: 1fr;
+            }
+
+            .alert-card {
+                padding: 25px;
+            }
+
+            .emergency-header h1 {
+                font-size: 34px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="family.html">Family</a>
+        <a href="reports.html">Reports</a>
+
+    </nav>
+
+    <button class="login-btn">
+        Profile
+    </button>
+
+</header>
+
+
+<main class="emergency-page">
+
+    <div class="emergency-container">
+
+
+        <div class="emergency-header">
+
+            <h1>🚨 Emergency Alert</h1>
+
+            <p>
+                Quickly notify your selected emergency contacts
+                when immediate assistance is needed.
+            </p>
+
+        </div>
+
+
+        <div class="alert-card">
+
+
+            <div class="emergency-icon">
+                🚨
+            </div>
+
+
+            <h2>Emergency Assistance</h2>
+
+            <p>
+                Press the button below to activate the emergency
+                alert workflow configured for your family.
+            </p>
+
+
+            <button
+                class="emergency-btn"
+                onclick="sendAlert()">
+
+                SEND EMERGENCY ALERT
+
+            </button>
+
+
+            <div class="contacts">
+
+                <div class="contact">
+
+                    <div class="contact-icon">
+                        👨‍👩‍👧
+                    </div>
+
+                    <strong>Family</strong>
+
+                    <small>
+                        Family contacts
+                    </small>
+
+                </div>
+
+
+                <div class="contact">
+
+                    <div class="contact-icon">
+                        📱
+                    </div>
+
+                    <strong>Emergency Contact</strong>
+
+                    <small>
+                        Configured contact
+                    </small>
+
+                </div>
+
+
+                <div class="contact">
+
+                    <div class="contact-icon">
+                        🏥
+                    </div>
+
+                    <strong>Medical Support</strong>
+
+                    <small>
+                        Configured support
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="warning" id="emergencyStatus">
+
+                Alerts are sent by the secure backend to your saved contacts.
+                Confirm that the contact numbers are correct before using SOS.
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="logo">
+        Arogya<span>AI</span>
+    </div>
+
+    <p>
+        Intelligent Family Health Guardian
+    </p>
+
+</footer>
+
+
+<script src="js/api.js"></script>
+<script src="js/emergency.js"></script>
+
+
+</body>
+
+</html>
+
